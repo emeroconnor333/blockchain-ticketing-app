@@ -145,6 +145,17 @@ textarea {
     color: #111;
 }
 
+/* ── Home text typography ───────────────────────────────────── */
+.home-text h3 {
+    margin-top: 24px;
+    margin-bottom: 0;
+}
+.home-text p,
+.home-text ul {
+    margin-top: 4px;
+    margin-bottom: 0;
+}
+
 /* ── Home hero layout ───────────────────────────────────────── */
 .home-hero {
     display: flex;
