@@ -1,6 +1,5 @@
 ## Instructions:
-- Pull this repo
-- Right click index.html and select Open Live Server
+- Follow the link to the website or pull this repo, right click index.html, then select Open Live Server
 - Create a wallet using the "Create Wallet" tab
 - Top up the wallet with SETH
 - Use SETH to buy a ticket in the "Buy a Ticket" tab
