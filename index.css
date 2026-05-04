@@ -1,0 +1,273 @@
+/* ── Reset & base ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fff0f3;
+    color: #111;
+}
+
+/* ── Header + top nav ───────────────────────────────────────── */
+.header {
+    background: #ffb6c1;
+    padding: 0 30px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header h1 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: #fff;
+    white-space: nowrap;
+    padding: 14px 0;
+}
+
+/* ── Top nav ────────────────────────────────────────────────── */
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 4px;
+}
+.menu ul li a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 18px 16px;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+.menu ul li a:hover,
+.menu ul li a.active {
+    background: #ff8fa3;
+    color: #fff;
+}
+
+/* ── Main content ───────────────────────────────────────────── */
+.content {
+    padding: 30px 40px;
+    min-height: 100vh;
+}
+
+/* ── Tabs ───────────────────────────────────────────────────── */
+.tabcontent { display: none; max-width: 100%; }
+.tabshown   { display: block; }
+
+/* ── Forms ──────────────────────────────────────────────────── */
+label {
+    display: block;
+    margin-top: 14px;
+    margin-bottom: 4px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #111;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #f4a0b0;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    background: #fff;
+    color: #111;
+}
+
+input[readonly] { background: #fce4ec; color: #444; }
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #f4a0b0;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-family: 'Courier New', monospace;
+    resize: vertical;
+    background: #fff8f9;
+    color: #111;
+}
+
+/* ── Buttons ────────────────────────────────────────────────── */
+.btn {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 22px;
+    background: #ff8fa3;
+    color: #111;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-family: 'Courier New', monospace;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+.btn:hover { background: #ff6b85; }
+
+/* ── Wallet loader row ──────────────────────────────────────── */
+.wallet-loader {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-top: 10px;
+}
+.wallet-loader input[type="password"] { flex: 1 1 180px; margin: 0; }
+.wallet-loader input[type="file"]     { flex: 1 1 180px; }
+
+/* ── Buy action row ─────────────────────────────────────────── */
+.buy-action {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 14px;
+}
+.buy-action input { flex: 0 0 140px; margin: 0; }
+
+/* ── Balance results ────────────────────────────────────────── */
+.balance-line {
+    margin-top: 12px;
+    font-size: 1.05rem;
+    padding: 10px 16px;
+    background: #fff;
+    border: 1px solid #f4a0b0;
+    border-radius: 6px;
+    color: #111;
+}
+
+/* ── Home hero layout ───────────────────────────────────────── */
+.home-hero {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    min-height: 300px;
+}
+.hero-img-wrap {
+    width: 50vw;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    padding-right: 20px;
+}
+.hero-img {
+    width: 340px;
+    max-width: 100%;
+}
+.home-text {
+    flex: 1;
+    min-width: 0;
+    width: 50%;
+}
+
+@media (max-width: 600px) {
+    .home-hero      { flex-direction: column; }
+    .hero-img-wrap  { width: 100%; padding-right: 0; }
+    .hero-img       { width: 100%; }
+}
+
+/* ── Address book ───────────────────────────────────────────── */
+.address-book-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 4px;
+}
+.address-book-row input,
+.address-book-row select { flex: 1; margin: 0; }
+
+select {
+    padding: 10px 14px;
+    border: 1px solid #f4a0b0;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    background: #fff;
+    color: #111;
+}
+
+.btn-sm {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+    margin-top: 0;
+    flex-shrink: 0;
+}
+
+/* ── Wallet details card ────────────────────────────────────── */
+.wallet-details { margin-top: 16px; }
+
+/* ── Copy rows ──────────────────────────────────────────────── */
+.copy-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+.copy-row input { flex: 1; margin: 0; }
+
+.copy-row--textarea { align-items: flex-start; }
+.copy-row--textarea textarea { flex: 1; margin: 0; }
+
+.btn-copy {
+    flex-shrink: 0;
+    padding: 8px 14px;
+    font-size: 0.8rem;
+    margin-top: 0;
+    min-width: 60px;
+}
+.btn-copy.copied { background: #66bb6a; color: #fff; }
+
+/* ── Info box ───────────────────────────────────────────────── */
+.info-box {
+    margin-top: 28px;
+    padding: 16px 20px;
+    background: #fff;
+    border: 1px solid #f4a0b0;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: #111;
+}
+.info-box h3 { margin-top: 0; }
+
+/* ── Link hover ─────────────────────────────────────────────── */
+a:hover { color: #c2185b; }
+
+/* ── Utility ────────────────────────────────────────────────── */
+.hidden { display: none !important; }
+
+/* ── Modal ──────────────────────────────────────────────────── */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 200;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.35);
+}
+.modal-content {
+    background: #fff0f3;
+    margin: 18% auto;
+    padding: 24px 30px;
+    border-radius: 8px;
+    max-width: 480px;
+    position: relative;
+    font-size: 0.95rem;
+    border: 1px solid #ffb6c1;
+    color: #111;
+}
+.close {
+    position: absolute;
+    top: 10px; right: 16px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: #555;
+}
+.close:hover { color: #000; }
