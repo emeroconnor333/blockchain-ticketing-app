@@ -15,6 +15,8 @@ contract EmerTicket {
     mapping(address => uint256)                     public balanceOf;
     mapping(address => mapping(address => uint256)) public allowance;
 
+    bool private _locked; // reentrancy guard
+
     // ── ERC-20 events ───────────────────────────────────────────────
     event Transfer(address indexed from, address indexed to, uint256 value);
     event Approval(address indexed owner, address indexed spender, uint256 value);
@@ -23,6 +25,13 @@ contract EmerTicket {
     modifier onlyOwner() {
         require(msg.sender == owner, "Not the contract owner");
         _;
+    }
+
+    modifier nonReentrant() {
+        require(!_locked, "Reentrant call");
+        _locked = true;
+        _;
+        _locked = false;
     }
 
     // ── Constructor ─────────────────────────────────────────────────
@@ -75,18 +84,21 @@ contract EmerTicket {
 
     // Buyer sends SETH; they receive one ticket per ticketPrice paid.
     // SETH goes to the vendor (owner).
-    function buyToken() public payable {
+    function buyToken() public payable nonReentrant {
+        address _owner = owner; // cache to avoid repeated SLOADs
+
+        require(msg.sender != _owner, "Vendor cannot purchase their own tickets");
         require(msg.value >= ticketPrice, "Insufficient SETH sent");
 
         uint256 ticketsBought = msg.value / ticketPrice;
-        require(balanceOf[owner] >= ticketsBought, "Not enough tickets available");
+        require(balanceOf[_owner] >= ticketsBought, "Not enough tickets available");
 
-        balanceOf[owner]       -= ticketsBought;
+        balanceOf[_owner]      -= ticketsBought;
         balanceOf[msg.sender]  += ticketsBought;
-        emit Transfer(owner, msg.sender, ticketsBought);
+        emit Transfer(_owner, msg.sender, ticketsBought);
 
         // Forward SETH to the vendor
-        (bool sent, ) = owner.call{value: msg.value}("");
+        (bool sent, ) = _owner.call{value: msg.value}("");
         require(sent, "Failed to forward SETH to vendor");
     }
 
