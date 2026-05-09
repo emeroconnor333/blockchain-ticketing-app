@@ -1,8 +1,12 @@
 // Wallet creation and keystore download
 
 function createWallet() {
-    const password = $("#walletPassword").val();
-    if (!password) { alert("Please enter a password for the keystore."); return; }
+    const password        = $("#walletPassword").val();
+    const passwordConfirm = $("#walletPasswordConfirm").val();
+
+    if (!password)                    { showModal("Please enter a password.");              return; }
+    if (password !== passwordConfirm) { showModal("Passwords do not match.");               return; }
+    if (password.length < 8)          { showModal("Password must be at least 8 characters."); return; }
 
     const localWeb3 = new Web3();
     const account   = localWeb3.eth.accounts.create();
@@ -18,7 +22,7 @@ function createWallet() {
 function downloadKeystore() {
     const json    = $("#keystoreDisplay").val();
     const address = $("#walletAddress").val();
-    if (!json) { alert("Create a wallet first."); return; }
+    if (!json) { showModal("Create a wallet first."); return; }
 
     const blob = new Blob([json], { type: "application/json" });
     const url  = URL.createObjectURL(blob);
