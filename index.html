@@ -63,7 +63,6 @@
                     <p><a href="https://sepolia.etherscan.io/address/0x5E539086F76ed7F3E57a372Af15aF5b10D70B0D9" target="_blank">Buying a ticket</a></p>
                     <p><a href="https://sepolia.etherscan.io/tx/0xb4d1b462830bcc14e19b0c2590579e2b98b978197f2d139028bd46417cb32c78" target="_blank">Topping up vendor (contract creator) wallet</a></p>
                     <p><a href="https://sepolia.etherscan.io/tx/0xd6d73581e1a88b50048ab7ef7e345667942094a6fd88a338d8b534291f37a7e2" target="_blank">Topping up attendee wallet</a></p>
-                    <p><a href="" target="_blank">Topping up doorman wallet</a></p>
                     <p><a href="https://sepolia.etherscan.io/tx/0x43b672c8fd554923e535fe668fd147c6b02ef4c31c3a3f9dec2ac7217c2c81ef" target="_blank">Returning a ticket</a></p>                                   
 
                     <h3>Report and GitHub</h3>
@@ -79,6 +78,9 @@
 
             <label for="walletPassword">Keystore Password</label>
             <input type="password" id="walletPassword" placeholder="Enter a strong password">
+
+            <label for="walletPasswordConfirm">Confirm Password</label>
+            <input type="password" id="walletPasswordConfirm" placeholder="Re-enter your password">
 
             <button class="btn" id="createWalletBtn">Create Wallet</button>
 
@@ -107,12 +109,12 @@
             <div class="info-box">
                 <h3>About the Keystore Format</h3>
                 <ul>
-                    <li><strong>version</strong> &mdash; Keystore spec version (3).</li>
-                    <li><strong>id</strong> &mdash; UUID for this wallet.</li>
-                    <li><strong>address</strong> &mdash; Public Ethereum address derived from the private key.</li>
-                    <li><strong>crypto.ciphertext</strong> &mdash; AES-128-CTR encrypted private key.</li>
-                    <li><strong>crypto.kdf</strong> &mdash; scrypt key-derivation function used to derive an encryption key from your password.</li>
-                    <li><strong>crypto.mac</strong> &mdash; Message authentication code to verify the password on decryption.</li>
+                    <li><strong>version</strong> : Keystore spec version (3).</li>
+                    <li><strong>id</strong> : UUID for this wallet.</li>
+                    <li><strong>address</strong> : Public Ethereum address derived from the private key.</li>
+                    <li><strong>crypto.ciphertext</strong> : AES-128-CTR encrypted private key.</li>
+                    <li><strong>crypto.kdf</strong> : scrypt key-derivation function used to derive an encryption key from your password.</li>
+                    <li><strong>crypto.mac</strong> : Message authentication code to verify the password on decryption.</li>
                 </ul>
             </div>
         </section>
@@ -122,19 +124,19 @@
             <h1>Check Balances</h1>
             <p>Enter any Ethereum address to view its SETH and ticket token balance.</p>
 
+            <label for="balanceAddress">Wallet Address</label>
+            <div class="address-book-row">
+                <input type="text" id="balanceAddress" placeholder="0x…">
+                <input type="text" id="addressLabel" placeholder="Label (e.g. Purchaser)">
+                <button class="btn btn-sm" id="saveAddressBtn">Save</button>
+            </div>
+
             <label for="savedAddresses">Saved Addresses</label>
             <div class="address-book-row">
                 <select id="savedAddresses">
                     <option value="">— select a saved address —</option>
                 </select>
                 <button class="btn btn-sm" id="deleteAddressBtn">Delete</button>
-            </div>
-
-            <label for="balanceAddress">Wallet Address</label>
-            <div class="address-book-row">
-                <input type="text" id="balanceAddress" placeholder="0x…">
-                <input type="text" id="addressLabel" placeholder="Label (e.g. Purchaser)">
-                <button class="btn btn-sm" id="saveAddressBtn">Save</button>
             </div>
 
             <button class="btn" id="checkBalancesBtn">Check Balances</button>
@@ -208,7 +210,7 @@
 
     <!-- Dependencies -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
 
     <!-- App modules -->
     <script src="js/config.js"></script>
