@@ -1,4 +1,4 @@
-# Emer's Blockchain Ticketing DApp
+# Blockchain Ticketing DApp
 
 A Web3 distributed application implementing a simple ticketing system on the Ethereum Sepolia testnet. Users can create wallets, purchase ticket tokens using SETH, and return tickets to the vendor. The smart contract `EmerTicket.sol` implements the ERC-20 standard extended with a payable `buyToken()` function.
 
